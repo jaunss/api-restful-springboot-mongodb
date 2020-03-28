@@ -9,5 +9,4 @@ public class ApiMongodbApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiMongodbApplication.class, args);
 	}
-
 }
