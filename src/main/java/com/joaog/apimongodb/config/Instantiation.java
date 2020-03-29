@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.joaog.apimongodb.domain.Post;
 import com.joaog.apimongodb.domain.User;
+import com.joaog.apimongodb.dto.AutorDTO;
 import com.joaog.apimongodb.repository.PostRepository;
 import com.joaog.apimongodb.repository.UserRepository;
 
@@ -38,8 +39,8 @@ public class Instantiation implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
 		
-		Post post1 = new Post(null, sdf.parse("21/03/2020"), "Partiu Viagem!", "Vou viajar para São Paulo, abraços.", maria);
-		Post post2 = new Post(null, sdf.parse("23/03/2020"), "Bom dia", "Acordei feliz hoje!", maria);
+		Post post1 = new Post(null, sdf.parse("21/03/2020"), "Partiu Viagem!", "Vou viajar para São Paulo, abraços.", new AutorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("23/03/2020"), "Bom dia", "Acordei feliz hoje!", new AutorDTO(maria));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 	}
