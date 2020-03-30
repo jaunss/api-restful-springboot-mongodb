@@ -1,5 +1,6 @@
 package com.joaog.apimongodb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,15 @@ import com.joaog.apimongodb.services.exception.ObjectNotFoundException;
 public class PostService {
 	
 	@Autowired
-	private PostRepository userRepository;
+	private PostRepository postRepository;
 	
 	
 	public Post findById(String id) {
-		Optional<Post> user = userRepository.findById(id);
-		return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
+		Optional<Post> obj = postRepository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
+	}
+	
+	public List<Post> findByTitle(String texto) {
+		return postRepository.findByTitleContainingIgnoreCase(texto);
 	}
 }
